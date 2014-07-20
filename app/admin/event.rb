@@ -1,4 +1,5 @@
 ActiveAdmin.register Event do
+  permit_params :start_time, :end_time, :title, :description
 
   
   # See permitted parameters documentation:
