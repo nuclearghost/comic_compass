@@ -1,4 +1,5 @@
 ActiveAdmin.register Photo do
+  permit_params :title, :url
 
   
   # See permitted parameters documentation:
