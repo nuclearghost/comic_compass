@@ -1,114 +1,64 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Shop -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Shop %></h1>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @shop.name %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
+      <dd><pre class="prettyprint"><%= @shop.name %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:address) %></dt>
+      <dd><pre class="prettyprint"><%= @shop.address %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:address2) %></dt>
+      <dd><pre class="prettyprint"><%= @shop.address2 %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:city) %></dt>
+      <dd><pre class="prettyprint"><%= @shop.city %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:state) %></dt>
+      <dd><pre class="prettyprint"><%= @shop.state %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:scf) %></dt>
+      <dd><pre class="prettyprint"><%= @shop.scf %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:zip) %></dt>
+      <dd><pre class="prettyprint"><%= @shop.zip %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:mailscore) %></dt>
+      <dd><pre class="prettyprint"><%= @shop.mailscore %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:sic1code) %></dt>
+      <dd><pre class="prettyprint"><%= @shop.sic1code %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:sic1) %></dt>
+      <dd><pre class="prettyprint"><%= @shop.sic1 %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:sic2code) %></dt>
+      <dd><pre class="prettyprint"><%= @shop.sic2code %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:sic2) %></dt>
+      <dd><pre class="prettyprint"><%= @shop.sic2 %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:sic3code) %></dt>
+      <dd><pre class="prettyprint"><%= @shop.sic3code %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:sic3) %></dt>
+      <dd><pre class="prettyprint"><%= @shop.sic3 %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:sic4code) %></dt>
+      <dd><pre class="prettyprint"><%= @shop.sic4code %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:sic4) %></dt>
+      <dd><pre class="prettyprint"><%= @shop.sic4 %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:latitude) %></dt>
+      <dd><pre class="prettyprint"><%= @shop.latitude %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:longitude) %></dt>
+      <dd><pre class="prettyprint"><%= @shop.longitude %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:foursquare_id) %></dt>
+      <dd><pre class="prettyprint"><%= @shop.foursquare_id %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:email) %></dt>
+      <dd><pre class="prettyprint"><%= @shop.email %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:phone) %></dt>
+      <dd><pre class="prettyprint"><%= @shop.phone %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Address:</strong>
-  <%= @shop.address %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              shops_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_shop_path(@shop), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              shop_path(@shop),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Address2:</strong>
-  <%= @shop.address2 %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @shop.city %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @shop.state %>
-</p>
-
-<p>
-  <strong>Scf:</strong>
-  <%= @shop.scf %>
-</p>
-
-<p>
-  <strong>Zip:</strong>
-  <%= @shop.zip %>
-</p>
-
-<p>
-  <strong>Mailscore:</strong>
-  <%= @shop.mailscore %>
-</p>
-
-<p>
-  <strong>Sic1code:</strong>
-  <%= @shop.sic1code %>
-</p>
-
-<p>
-  <strong>Sic1:</strong>
-  <%= @shop.sic1 %>
-</p>
-
-<p>
-  <strong>Sic2code:</strong>
-  <%= @shop.sic2code %>
-</p>
-
-<p>
-  <strong>Sic2:</strong>
-  <%= @shop.sic2 %>
-</p>
-
-<p>
-  <strong>Sic3code:</strong>
-  <%= @shop.sic3code %>
-</p>
-
-<p>
-  <strong>Sic3:</strong>
-  <%= @shop.sic3 %>
-</p>
-
-<p>
-  <strong>Sic4code:</strong>
-  <%= @shop.sic4code %>
-</p>
-
-<p>
-  <strong>Sic4:</strong>
-  <%= @shop.sic4 %>
-</p>
-
-<p>
-  <strong>Latitude:</strong>
-  <%= @shop.latitude %>
-</p>
-
-<p>
-  <strong>Longitude:</strong>
-  <%= @shop.longitude %>
-</p>
-
-<p>
-  <strong>Foursquare:</strong>
-  <%= @shop.foursquare_id %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @shop.email %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @shop.phone %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @shop.user %>
-</p>
-
-<%= link_to 'Edit', edit_shop_path(@shop) %> |
-<%= link_to 'Back', shops_path %>

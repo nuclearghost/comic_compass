@@ -1,37 +1,40 @@
-<h1>Listing shops</h1>
-
-<table>
+<%- model_class = Shop -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Shop %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Address2</th>
-      <th>City</th>
-      <th>State</th>
-      <th>Scf</th>
-      <th>Zip</th>
-      <th>Mailscore</th>
-      <th>Sic1code</th>
-      <th>Sic1</th>
-      <th>Sic2code</th>
-      <th>Sic2</th>
-      <th>Sic3code</th>
-      <th>Sic3</th>
-      <th>Sic4code</th>
-      <th>Sic4</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th>Foursquare</th>
-      <th>Email</th>
-      <th>Phone</th>
-      <th>User</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:address) %></th>
+      <th><%= model_class.human_attribute_name(:address2) %></th>
+      <th><%= model_class.human_attribute_name(:city) %></th>
+      <th><%= model_class.human_attribute_name(:state) %></th>
+      <th><%= model_class.human_attribute_name(:scf) %></th>
+      <th><%= model_class.human_attribute_name(:zip) %></th>
+      <th><%= model_class.human_attribute_name(:mailscore) %></th>
+      <th><%= model_class.human_attribute_name(:sic1code) %></th>
+      <th><%= model_class.human_attribute_name(:sic1) %></th>
+      <th><%= model_class.human_attribute_name(:sic2code) %></th>
+      <th><%= model_class.human_attribute_name(:sic2) %></th>
+      <th><%= model_class.human_attribute_name(:sic3code) %></th>
+      <th><%= model_class.human_attribute_name(:sic3) %></th>
+      <th><%= model_class.human_attribute_name(:sic4code) %></th>
+      <th><%= model_class.human_attribute_name(:sic4) %></th>
+      <th><%= model_class.human_attribute_name(:latitude) %></th>
+      <th><%= model_class.human_attribute_name(:longitude) %></th>
+      <th><%= model_class.human_attribute_name(:foursquare_id) %></th>
+      <th><%= model_class.human_attribute_name(:email) %></th>
+      <th><%= model_class.human_attribute_name(:phone) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @shops.each do |shop| %>
       <tr>
+        <td><%= shop.id %></td>
         <td><%= shop.name %></td>
         <td><%= shop.address %></td>
         <td><%= shop.address2 %></td>
@@ -53,15 +56,21 @@
         <td><%= shop.foursquare_id %></td>
         <td><%= shop.email %></td>
         <td><%= shop.phone %></td>
-        <td><%= shop.user %></td>
-        <td><%= link_to 'Show', shop %></td>
-        <td><%= link_to 'Edit', edit_shop_path(shop) %></td>
-        <td><%= link_to 'Destroy', shop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l shop.created_at, format: :long %></td>
+        <td>
+          <%= link_to shop_path(shop), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to shop_path(shop), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Shop', new_shop_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_shop_path,
+            :class => 'btn btn-primary' %>
